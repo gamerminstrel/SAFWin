@@ -30,14 +30,17 @@ namespace SAFWin
 
         private void Grab_Info_Button_Click(object sender, RoutedEventArgs e)
         {
-            string script_path = Directory.GetCurrentDirectory() + "\\Properties";  //Declare path to the PowerShell Script
+            //string script_path = Directory.GetCurrentDirectory() + "\\Properties";  //Declare path to the PowerShell Script
             PowerShell ps = PowerShell.Create();    //create an instance of Powershell
-            ps.AddScript(script_path + "HandyApp_Date.ps1").Invoke();    //add script to PowerShell instance, and invoke it.
+            string ps_script = Directory.GetCurrentDirectory() + "\\Properties\\HandyApp_Date.ps1";
+            ps.AddScript(System.IO.File.ReadAllText(ps_script)).Invoke();
+            //ps.AddScript(script_path + "\\HandyApp_Date.ps1").Invoke();    //add script to PowerShell instance, and invoke it.
 
             string temp_file_path = System.IO.Path.GetTempPath() + "\\HandyApp.txt";    //Declare path to %TEMP% directory
             string[] sys_info = System.IO.File.ReadAllLines(System.IO.Path.GetTempPath() + "\\HandyApp.txt");   //read every line of HandyApp.txt as a part of an array
             foreach (string item in sys_info)
                 SysInfoText.Text += item;
+            //SysInfoText.Text = "Script Path is: \n" + script_path + "\\HandyApp_Date.ps1";
         }
     }
 }
