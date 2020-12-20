@@ -51,76 +51,12 @@ namespace SAFWin
         {
             example_Environment();
         }
-
-        void GetSystemInfo_PowerShell()
-        {
-            /*
-             * This Method opens a Powershell instance and runs commands through to gather System Info.
-             * Once gathered, it converts into an array and formats/outputs into the TextBox.
-             */
-
-            SysInfoText.Text = "System Info:";
-            PowerShell ps = PowerShell.Create();
-            List<string> sysinfo_list = new List<string>(); //this variable will contain all system info.
-
-            //This will run a single command to Powershell then output its results back into the sysinfo_list variable.
-            //foreach (PSObject result in ps.AddCommand("Get-Date").Invoke())
-            //{
-            //    sysinfo_list.Add(result.ToString());
-            //}
-            sysinfo_list.Add(ps.AddCommand("Get-Date").Invoke().ToString());
-            sysinfo_list.Add(ps.AddCommand("Get-TimeZone").Invoke().ToString());
-
-            ////Same as above butfor getting TimeZone
-            //foreach (PSObject result in ps.AddCommand("Get-TimeZone").Invoke())
-            //{
-            //    sysinfo_list.Add(result.ToString());
-            //}
-
-            String[] sysinfo_str_array = sysinfo_list.ToArray();    //this converts the List into an array that can be formatted in SysInfoText.Text
-            //foreach (string item in sysinfo_str_array)
-            foreach (string item in sysinfo_str_array)
-            {
-                SysInfoText.Text += ("\n", item);
-                //MessageBox.Show(string.Join(Environment.NewLine, sysinfo_str_array));
-            }
-        }
-
-        void GetSystemInfo_CSharp()
-        {
-            /*The point here is to gather as much important System Info as Possible using c#
-             * 
-             */
-            List<string> sysinfo_list = new List<string>();
-            TimeZoneInfo localZone = TimeZoneInfo.Local;
-            DateTime currentDate = DateTime.Now;
-
-            SysInfoText.Text += "\n Today's Date:\t " + currentDate;
-            SysInfoText.Text += "\n Local TimeZone:\t " + localZone.DisplayName;
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            System.Diagnostics.Process.Start("Powershell.exe", "dism /online /cleanup-image /restorehealth; sfc /scannow; Read-Host -Prompt 'press any key to continue'");
-            //System.Diagnostics.Process.Start("PowerShell.exe", "Get-TimeZone; Get-Date; Read-Host -Prompt 'press any key to continue'"); //demo line to use in PowerShell
-        }
-
-        private void DL_WinUpdater_Button_Click(object sender, RoutedEventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://go.microsoft.com/fwlink/?LinkID=799445");
-        }
-
-        private void Check_For_Updates_Button_Click(object sender, RoutedEventArgs e)
-        {
-            System.Diagnostics.Process.Start("ms-settings:windowsupdate");
-        }
         void example_Environment()
         {
             string str;
             string nl = Environment.NewLine;
             //
-            Console.WriteLine();
+            SysInfoText.Text = "System Info:";
             Console.WriteLine("-- Environment members --");
 
             //  Invoke this sample with an arbitrary set of command line arguments.
@@ -185,6 +121,85 @@ namespace SAFWin
 
             string[] drives = Environment.GetLogicalDrives();
             Console.WriteLine("GetLogicalDrives: {0}", String.Join(", ", drives));
+        }
+        void GetSystemInfo_PowerShell()
+        {
+            /*
+             * This Method opens a Powershell instance and runs commands through to gather System Info.
+             * Once gathered, it converts into an array and formats/outputs into the TextBox.
+             */
+
+            SysInfoText.Text = "System Info:";
+            PowerShell ps = PowerShell.Create();
+            List<string> sysinfo_list = new List<string>(); //this variable will contain all system info.
+
+            //This will run a single command to Powershell then output its results back into the sysinfo_list variable.
+            //foreach (PSObject result in ps.AddCommand("Get-Date").Invoke())
+            //{
+            //    sysinfo_list.Add(result.ToString());
+            //}
+            sysinfo_list.Add(ps.AddCommand("Get-Date").Invoke().ToString());
+            sysinfo_list.Add(ps.AddCommand("Get-TimeZone").Invoke().ToString());
+
+            ////Same as above butfor getting TimeZone
+            //foreach (PSObject result in ps.AddCommand("Get-TimeZone").Invoke())
+            //{
+            //    sysinfo_list.Add(result.ToString());
+            //}
+
+            String[] sysinfo_str_array = sysinfo_list.ToArray();    //this converts the List into an array that can be formatted in SysInfoText.Text
+            //foreach (string item in sysinfo_str_array)
+            foreach (string item in sysinfo_str_array)
+            {
+                SysInfoText.Text += ("\n", item);
+                //MessageBox.Show(string.Join(Environment.NewLine, sysinfo_str_array));
+            }
+        }
+
+        void GetSystemInfo_CSharp()
+        {
+            /*The point here is to gather as much important System Info as Possible using c#
+             * 
+             */
+            List<string> sysinfo_list = new List<string>();
+            TimeZoneInfo localZone = TimeZoneInfo.Local;
+            DateTime currentDate = DateTime.Now;
+
+            SysInfoText.Text += "\n Today's Date:\t " + currentDate;
+            SysInfoText.Text += "\n Local TimeZone:\t " + localZone.DisplayName;
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("Powershell.exe", "dism /online /cleanup-image /restorehealth; sfc /scannow; Read-Host -Prompt 'press any key to continue'");
+            //System.Diagnostics.Process.Start("PowerShell.exe", "Get-TimeZone; Get-Date; Read-Host -Prompt 'press any key to continue'"); //demo line to use in PowerShell
+        }
+
+        private void DL_WinUpdater_Button_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://go.microsoft.com/fwlink/?LinkID=799445");
+        }
+
+        private void Check_For_Updates_Button_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("ms-settings:windowsupdate");
+        }
+  
+
+        private void Intel_Updater_Button_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://downloadmirror.intel.com/28425/a08/Intel-Driver-and-Support-Assistant-Installer.exe");
+        }
+
+        private void AMD_Button_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.amd.com/en/support");
+        }
+
+        private void NVidia_Button_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.nvidia.com/en-us/geforce/drivers/");
         }
     }
 

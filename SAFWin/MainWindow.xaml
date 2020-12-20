@@ -5,68 +5,76 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SAFWin"
         mc:Ignorable="d"
-        Title="SAFWin - Setup And Fix Windows" Height="450" Width="800" MinWidth="800" MinHeight="450">
+        Title="SAFWin - Setup And Fix Windows" Height="445" Width="800" MinWidth="800" MinHeight="450">
     <Grid x:Name="DISM_SFC_Button">
-        <Button x:Name="Grab_Info_Button" Content="Get Info" HorizontalAlignment="Left" Margin="319,271,0,0" VerticalAlignment="Top" Width="75" Click="Grab_Info_Button_Click"/>
-        <TextBox x:Name="SysInfoText" HorizontalAlignment="Left" Height="401" Margin="399,10,0,0" TextWrapping="Wrap" Text="Gathering System Info..." VerticalAlignment="Top" Width="385"/>
-        <Button x:Name="TestButton" Content="Do it." HorizontalAlignment="Left" Margin="319,296,0,0" VerticalAlignment="Top" Width="75" Click="TestButton_Click"/>
-        <Canvas HorizontalAlignment="Left" Height="92" Margin="10,10,0,0" VerticalAlignment="Top" Width="384" Background="#FF959595">
-            <Button Content="Repair Windows" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Click="Button_Click" Canvas.Left="10" Canvas.Top="10"/>
-            <Button x:Name="DL_WinUpdater_Button" Content="Upgrade Windows" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Click="DL_WinUpdater_Button_Click" Canvas.Left="10" Canvas.Top="35"/>
-            <Button x:Name="Check_For_Updates_Button" Content="Check for Updates" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Click="Check_For_Updates_Button_Click" Canvas.Left="10" Canvas.Top="60"/>
-            <Label Content="Update and Repair Windows 10." Canvas.Left="156" Canvas.Top="10" Height="72" Width="218"/>
-            <CheckBox Content="" Canvas.Left="125" Canvas.Top="15"/>
-            <CheckBox Content="" Canvas.Left="125" Canvas.Top="40"/>
-            <CheckBox Content="" Canvas.Left="125" Canvas.Top="65"/>
-            <Button x:Name="Check_For_PUPs_Button" Content="Check for PUPs" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Click="Check_For_Updates_Button_Click" Canvas.Left="151" Canvas.Top="60"/>
-            <CheckBox Content="" Canvas.Left="266" Canvas.Top="65"/>
-        </Canvas>
-        <Canvas HorizontalAlignment="Left" Height="114" Margin="10,107,0,0" VerticalAlignment="Top" Width="384" Background="#FF959595">
-            <TabControl x:Name="Manufacturer_Pages_TabControl" Height="94" Canvas.Left="10" Canvas.Top="10" Width="364">
-                <TabItem x:Name="HP_Tab" Header="HP">
-                    <Grid Background="#FFE5E5E5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="37*"/>
-                            <ColumnDefinition Width="142*"/>
-                        </Grid.ColumnDefinitions>
-                        <Button x:Name="HP_SupportAssistant_Button" Content="HP SupportAssistant" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="132" Grid.ColumnSpan="2"/>
-                        <Button x:Name="HP_Support_Page" Content="HP Support Website" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="132" Grid.ColumnSpan="2"/>
-                    </Grid>
-                </TabItem>
-                <TabItem x:Name="Dell_Tab" Header="Dell">
-                    <Grid Background="#FFE5E5E5"/>
-                </TabItem>
-                <TabItem x:Name="Lenovo_Support_Tab" Header="Lenovo" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="54">
-                    <Grid Background="#FFE5E5E5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="193*"/>
-                            <ColumnDefinition Width="165*"/>
-                        </Grid.ColumnDefinitions>
-                    </Grid>
-                </TabItem>
-                <TabItem Header="ASUS" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="54">
-                    <Grid Background="#FFE5E5E5"/>
-                </TabItem>
-                <TabItem Header="Acer" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="54">
-                    <Grid Background="#FFE5E5E5"/>
-                </TabItem>
-            </TabControl>
-        </Canvas>
-        <Canvas HorizontalAlignment="Left" Height="40" Margin="10,226,0,0" VerticalAlignment="Top" Width="384" Background="#FF959595">
-            <Button x:Name="Intel_Updater_Button" Content="Intel" Canvas.Left="10" Canvas.Top="10" Width="75"/>
-            <Button x:Name="AMD_Button" Content="AMD" Canvas.Left="90" Canvas.Top="10" Width="75"/>
-            <Button x:Name="NVidia_Button" Content="NVidia" Canvas.Left="170" Canvas.Top="10" Width="75"/>
-        </Canvas>
-        <Canvas HorizontalAlignment="Left" Height="100" Margin="10,271,0,0" VerticalAlignment="Top" Width="173" Background="#FF959595">
-            <TabControl Height="80" Canvas.Left="10" Canvas.Top="10" Width="153">
-                <TabItem x:Name="Chrome_Tab" Header="Chrome">
-                    <Grid Background="#FFE5E5E5"/>
-                </TabItem>
-                <TabItem x:Name="Firefox_Tab" Header="Firefox">
-                    <Grid Background="#FFE5E5E5"/>
-                </TabItem>
-            </TabControl>
-        </Canvas>
-
+        <TabControl HorizontalAlignment="Left" Height="401" Margin="10,10,0,0" VerticalAlignment="Top" Width="774">
+            <TabItem Header="Draft 1">
+                <Grid Background="#FFE5E5E5">
+                    <TextBox x:Name="SysInfoText" HorizontalAlignment="Left" Height="353" Margin="418,10,0,0" TextWrapping="Wrap" Text="Gathering System Info..." VerticalAlignment="Top" Width="340"/>
+                    <Button x:Name="TestButton" Content="Do it." HorizontalAlignment="Left" Margin="354,32,0,0" VerticalAlignment="Top" Width="66" Click="TestButton_Click" Height="18"/>
+                    <Canvas HorizontalAlignment="Left" Height="90" Margin="10,10,0,0" VerticalAlignment="Top" Width="339" Background="#FF959595">
+                        <Button Content="Repair Windows" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Click="Button_Click" Canvas.Left="10" Canvas.Top="10"/>
+                        <Button x:Name="DL_WinUpdater_Button" Content="Upgrade Windows" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Click="DL_WinUpdater_Button_Click" Canvas.Left="10" Canvas.Top="35"/>
+                        <Button x:Name="Check_For_Updates_Button" Content="Check for Updates" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Click="Check_For_Updates_Button_Click" Canvas.Left="10" Canvas.Top="60"/>
+                        <Label Content="Update and Repair &#xD;&#xA;Windows 10." Canvas.Left="156" Canvas.Top="10" Height="57" Width="173"/>
+                        <CheckBox Content="" Canvas.Left="125" Canvas.Top="15"/>
+                        <CheckBox Content="" Canvas.Left="125" Canvas.Top="40"/>
+                        <CheckBox Content="" Canvas.Left="125" Canvas.Top="65"/>
+                        <Button x:Name="Check_For_PUPs_Button" Content="Check for PUPs" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Click="Check_For_Updates_Button_Click" Canvas.Left="151" Canvas.Top="60"/>
+                        <CheckBox Content="" Canvas.Left="266" Canvas.Top="65"/>
+                    </Canvas>
+                    <Canvas HorizontalAlignment="Left" Height="112" Margin="10,105,0,0" VerticalAlignment="Top" Width="339" Background="#FF959595">
+                        <TabControl x:Name="Manufacturer_Pages_TabControl" Height="81" Canvas.Left="10" Canvas.Top="10" Width="319">
+                            <TabItem x:Name="HP_Tab" Header="HP">
+                                <Grid Background="#FFE5E5E5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="37*"/>
+                                        <ColumnDefinition Width="142*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button x:Name="HP_SupportAssistant_Button" Content="HP SupportAssistant" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="132" Grid.ColumnSpan="2"/>
+                                    <Button x:Name="HP_Support_Page" Content="HP Support Website" HorizontalAlignment="Left" Margin="106,10,0,0" VerticalAlignment="Top" Width="132" Grid.Column="1"/>
+                                </Grid>
+                            </TabItem>
+                            <TabItem x:Name="Dell_Tab" Header="Dell">
+                                <Grid Background="#FFE5E5E5"/>
+                            </TabItem>
+                            <TabItem x:Name="Lenovo_Support_Tab" Header="Lenovo" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="54">
+                                <Grid Background="#FFE5E5E5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="193*"/>
+                                        <ColumnDefinition Width="165*"/>
+                                    </Grid.ColumnDefinitions>
+                                </Grid>
+                            </TabItem>
+                            <TabItem Header="ASUS" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="54">
+                                <Grid Background="#FFE5E5E5"/>
+                            </TabItem>
+                            <TabItem Header="Acer" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="54">
+                                <Grid Background="#FFE5E5E5"/>
+                            </TabItem>
+                        </TabControl>
+                    </Canvas>
+                    <Canvas HorizontalAlignment="Left" Height="38" Margin="10,222,0,0" VerticalAlignment="Top" Width="339" Background="#FF959595">
+                        <Button x:Name="Intel_Updater_Button" Content="Intel" Canvas.Left="10" Canvas.Top="10" Width="75" Click="Intel_Updater_Button_Click"/>
+                        <Button x:Name="AMD_Button" Content="AMD" Canvas.Left="90" Canvas.Top="10" Width="75" Click="AMD_Button_Click"/>
+                        <Button x:Name="NVidia_Button" Content="NVidia" Canvas.Left="170" Canvas.Top="10" Width="75" Click="NVidia_Button_Click"/>
+                    </Canvas>
+                    <Canvas HorizontalAlignment="Left" Height="97" Margin="10,266,0,0" VerticalAlignment="Top" Width="153" Background="#FF959595">
+                        <TabControl Height="68" Canvas.Left="10" Canvas.Top="10" Width="133">
+                            <TabItem x:Name="Chrome_Tab" Header="Chrome">
+                                <Grid Background="#FFE5E5E5"/>
+                            </TabItem>
+                            <TabItem x:Name="Firefox_Tab" Header="Firefox">
+                                <Grid Background="#FFE5E5E5"/>
+                            </TabItem>
+                        </TabControl>
+                    </Canvas>
+                    <Button x:Name="Grab_Info_Button" Content="Get Info" HorizontalAlignment="Left" Margin="349,10,0,0" VerticalAlignment="Top" Width="66" Click="Grab_Info_Button_Click" Height="17"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="TabItem">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
