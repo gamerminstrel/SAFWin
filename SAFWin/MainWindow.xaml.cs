@@ -199,7 +199,7 @@ namespace SAFWin
 
         private void Check_For_Updates_Button_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start("ms-settings:windowsupdate");
+            System.Diagnostics.Process.Start("ms-settings:appsfeatures");
         }
   
 
