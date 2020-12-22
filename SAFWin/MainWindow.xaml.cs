@@ -17,6 +17,7 @@ using System.Management.Automation; //Lets one use powershell functionality
 using System.IO; //Lets one navigate file systems (find and open files)
 using System.Globalization; //Lets one grab the TimeZone
 using System.Collections; //lets me use the Environment example & library
+using System.Management; //Lets one grab system info like CPU model, RAM, etc.
 
 namespace SAFWin
 {
@@ -47,16 +48,28 @@ namespace SAFWin
             //SysInfoText.Text = "Script Path is: \n" + script_path + "\\HandyApp_Date.ps1";
         }
 
-        private void TestButton_Click(object sender, RoutedEventArgs e)
+        void EnvironmentInfo()
         {
-            example_Environment();
+            SysInfoText.Text = "System Info:";
+            // create management class object
+            ManagementClass mc = new ManagementClass("Win32_ComputerSystem");
+            //collection to store all management objects
+            ManagementObjectCollection moc = mc.GetInstances();
+            if (moc.Count != 0)
+            {
+                foreach (ManagementObject mo in mc.GetInstances())
+                {
+                    // display general system information
+                    SysInfoText.Text +="\nManufacturer: \t" + mo["Manufacturer"].ToString();
+                }
+            }
         }
         void example_Environment()
         {
             string str;
             string nl = Environment.NewLine;
             //
-            SysInfoText.Text = "System Info:";
+            
             Console.WriteLine("-- Environment members --");
 
             //  Invoke this sample with an arbitrary set of command line arguments.
@@ -161,12 +174,15 @@ namespace SAFWin
             /*The point here is to gather as much important System Info as Possible using c#
              * 
              */
+            SysInfoText.Text = "System Information:";
             List<string> sysinfo_list = new List<string>();
             TimeZoneInfo localZone = TimeZoneInfo.Local;
             DateTime currentDate = DateTime.Now;
 
             SysInfoText.Text += "\n Today's Date:\t " + currentDate;
             SysInfoText.Text += "\n Local TimeZone:\t " + localZone.DisplayName;
+            SysInfoText.Text += "\n Machine Name:\t " + Environment.MachineName;
+
 
         }
 
@@ -200,6 +216,80 @@ namespace SAFWin
         private void NVidia_Button_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://www.nvidia.com/en-us/geforce/drivers/");
+        }
+
+        private void HP_SupportAssistant_Button_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www8.hp.com/us/en/campaigns/hpsupportassistant/hpsupport.html");
+        }
+
+        private void HP_Support_Page_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://support.hp.com/us-en/drivers");
+        }
+
+        private void Dell_SupportAssist_Button_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://downloads.dell.com/serviceability/catalog/SupportAssistInstaller.exe");
+        }
+
+        private void Dell_Support_Page_Button_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.dell.com/support/home/en-us");
+        }
+
+        private void Lenovo_Vantage_Button_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.microsoft.com/en-us/p/lenovo-vantage/9wzdncrfj4mv?activetab=pivot:overviewtab");
+        }
+
+        private void Lenovo_Support_Button_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://support.lenovo.com/us/en/");
+        }
+
+        private void Chrome_Download_Button_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.google.com/chrome/");
+        }
+
+        private void Firefox_Download_Button_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.mozilla.org/firefox/download/thanks/");
+        }
+
+        private void ASUS_Support_Page_Button_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.asus.com/support/Download-Center/");
+        }
+
+        private void Customizer_Button_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(@"\\10.37.185.242\gsiso");
+        }
+
+        private void Reset_Chrome_Button_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("Chrome.exe", "chrome://settings/");
+        }
+
+        private void Set_TimeZone_Button_Click(object sender, RoutedEventArgs e)
+        {
+            PowerShell ps = PowerShell.Create();
+            ps.AddCommand("Set-TimeZone")
+                .AddParameter("Id", "Eastern Standard Time")
+                .Invoke();
+            //Set - TimeZone - Id "Eastern Standard Time"
+        }
+
+        private void Refresh_Button_Click(object sender, RoutedEventArgs e)
+        {
+            GetSystemInfo_CSharp();
+        }
+
+        private void Test_Button_Click(object sender, RoutedEventArgs e)
+        {
+            EnvironmentInfo();
         }
     }
 
