@@ -190,79 +190,105 @@ namespace SAFWin
         {
             System.Diagnostics.Process.Start("Powershell.exe", "dism /online /cleanup-image /restorehealth; sfc /scannow; Read-Host -Prompt 'press any key to continue'");
             //System.Diagnostics.Process.Start("PowerShell.exe", "Get-TimeZone; Get-Date; Read-Host -Prompt 'press any key to continue'"); //demo line to use in PowerShell
+            repair_windows_checkbox.IsChecked = true;
         }
 
         private void DL_WinUpdater_Button_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://go.microsoft.com/fwlink/?LinkID=799445");
+            upgrade_windows_checkbox.IsChecked = true;
         }
 
         private void Check_For_Updates_Button_Click(object sender, RoutedEventArgs e)
         {
+            System.Diagnostics.Process.Start("ms-settings:windowsupdate");
+            win_updates_checkbox.IsChecked = true;
+        }
+        private void Check_For_PUPs_Button_Click(object sender, RoutedEventArgs e)
+        {
             System.Diagnostics.Process.Start("ms-settings:appsfeatures");
-        }
-  
-
-        private void Intel_Updater_Button_Click(object sender, RoutedEventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://downloadmirror.intel.com/28425/a08/Intel-Driver-and-Support-Assistant-Installer.exe");
+            PUPs_checkbox.IsChecked = true;
         }
 
-        private void AMD_Button_Click(object sender, RoutedEventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://www.amd.com/en/support");
-        }
-
-        private void NVidia_Button_Click(object sender, RoutedEventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://www.nvidia.com/en-us/geforce/drivers/");
-        }
-
+        /* MANUFACTURER UPDATES
+         * This section is intended for all utilities from HP, Dell, ASUS, etc.
+         */
         private void HP_SupportAssistant_Button_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://www8.hp.com/us/en/campaigns/hpsupportassistant/hpsupport.html");
+            Manufacturer_Updates_Checkbox.IsChecked = true;
         }
 
         private void HP_Support_Page_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://support.hp.com/us-en/drivers");
+            Manufacturer_Updates_Checkbox.IsChecked = true;
         }
 
         private void Dell_SupportAssist_Button_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://downloads.dell.com/serviceability/catalog/SupportAssistInstaller.exe");
+            Manufacturer_Updates_Checkbox.IsChecked = true;
         }
 
         private void Dell_Support_Page_Button_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://www.dell.com/support/home/en-us");
+            Manufacturer_Updates_Checkbox.IsChecked = true;
         }
 
         private void Lenovo_Vantage_Button_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://www.microsoft.com/en-us/p/lenovo-vantage/9wzdncrfj4mv?activetab=pivot:overviewtab");
+            Manufacturer_Updates_Checkbox.IsChecked = true;
         }
 
         private void Lenovo_Support_Button_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://support.lenovo.com/us/en/");
-        }
-
-        private void Chrome_Download_Button_Click(object sender, RoutedEventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://www.google.com/chrome/");
-        }
-
-        private void Firefox_Download_Button_Click(object sender, RoutedEventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://www.mozilla.org/firefox/download/thanks/");
+            Manufacturer_Updates_Checkbox.IsChecked = true;
         }
 
         private void ASUS_Support_Page_Button_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://www.asus.com/support/Download-Center/");
+            Manufacturer_Updates_Checkbox.IsChecked = true;
         }
 
+        /*
+         * This section is intended for all general hardware tools, as opposed to OEMs like HP or Dell
+         */
+        private void Intel_Updater_Button_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://downloadmirror.intel.com/28425/a08/Intel-Driver-and-Support-Assistant-Installer.exe");
+            Other_Updates_checkbox.IsChecked = true;
+        }
+
+        private void AMD_Button_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.amd.com/en/support");
+            Other_Updates_checkbox.IsChecked = true;
+        }
+
+        private void NVidia_Button_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.nvidia.com/en-us/geforce/drivers/");
+            Other_Updates_checkbox.IsChecked = true;
+        }
+
+        /*
+         * This section is for setting up all Browser buttons and functions.
+         * To start with, download buttons. Eventually I want to add tools to maybe reset browsers or clear cache
+         */
+        private void Chrome_Download_Button_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.google.com/chrome/");
+        }
+        private void Firefox_Download_Button_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.mozilla.org/firefox/download/thanks/");
+
+        }
         private void Customizer_Button_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start(@"\\10.37.185.242\gsiso");
@@ -291,6 +317,8 @@ namespace SAFWin
         {
             EnvironmentInfo();
         }
+
+
     }
 
 }

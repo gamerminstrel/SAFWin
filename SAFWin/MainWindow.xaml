@@ -17,13 +17,13 @@
                         <Button x:Name="DL_WinUpdater_Button" Content="Upgrade Windows" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Click="DL_WinUpdater_Button_Click" Canvas.Left="10" Canvas.Top="35"/>
                         <Button x:Name="Check_For_Updates_Button" Content="Check for Updates" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Click="Check_For_Updates_Button_Click" Canvas.Left="10" Canvas.Top="60"/>
                         <Label Content="Update and Repair &#xD;&#xA;Windows 10." Canvas.Left="282" Canvas.Top="10" Height="57" Width="111"/>
-                        <CheckBox Content="" Canvas.Left="125" Canvas.Top="15"/>
-                        <CheckBox Content="" Canvas.Left="125" Canvas.Top="40"/>
-                        <CheckBox Content="" Canvas.Left="125" Canvas.Top="65"/>
-                        <Button x:Name="Check_For_PUPs_Button" Content="Check for PUPs" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Click="Check_For_Updates_Button_Click" Canvas.Left="150" Canvas.Top="10"/>
-                        <CheckBox Content="" Canvas.Left="265" Canvas.Top="15" RenderTransformOrigin="0.379,-1.012"/>
+                        <CheckBox x:Name="repair_windows_checkbox" Content="" Canvas.Left="125" Canvas.Top="15"/>
+                        <CheckBox x:Name="upgrade_windows_checkbox" Content="" Canvas.Left="125" Canvas.Top="40"/>
+                        <CheckBox x:Name="win_updates_checkbox" Content="" Canvas.Left="125" Canvas.Top="65"/>
+                        <Button x:Name="Check_For_PUPs_Button" Content="Check for PUPs" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Click="Check_For_PUPs_Button_Click" Canvas.Left="150" Canvas.Top="10"/>
+                        <CheckBox x:Name="PUPs_checkbox" Content="" Canvas.Left="265" Canvas.Top="15" RenderTransformOrigin="0.379,-1.012"/>
                         <Button x:Name="Set_TimeZone_Button" Content="Set Time Zone" Canvas.Left="150" Canvas.Top="35" Width="110" Click="Set_TimeZone_Button_Click"/>
-                        <CheckBox Content="" Canvas.Left="265" Canvas.Top="40" RenderTransformOrigin="0.379,-1.012"/>
+                        <CheckBox x:Name="timezone_checkbox" Content="" Canvas.Left="265" Canvas.Top="40" RenderTransformOrigin="0.379,-1.012"/>
                     </Canvas>
                     <Canvas HorizontalAlignment="Left" Height="112" Margin="10,105,0,0" VerticalAlignment="Top" Width="339" Background="#FF959595">
                         <TabControl x:Name="Manufacturer_Pages_TabControl" Height="64" Canvas.Left="10" Canvas.Top="10" Width="319">
@@ -68,7 +68,7 @@
                         <Button x:Name="Intel_Updater_Button" Content="Intel" Canvas.Left="10" Canvas.Top="10" Width="75" Click="Intel_Updater_Button_Click"/>
                         <Button x:Name="AMD_Button" Content="AMD" Canvas.Left="90" Canvas.Top="10" Width="75" Click="AMD_Button_Click"/>
                         <Button x:Name="NVidia_Button" Content="NVidia" Canvas.Left="170" Canvas.Top="10" Width="75" Click="NVidia_Button_Click"/>
-                        <CheckBox Content="CheckBox" Canvas.Left="258" Canvas.Top="13"/>
+                        <CheckBox x:Name="Other_Updates_checkbox" Content="CheckBox" Canvas.Left="258" Canvas.Top="13"/>
                     </Canvas>
                     <Canvas HorizontalAlignment="Left" Height="97" Margin="10,266,0,0" VerticalAlignment="Top" Width="129" Background="#FF959595">
                         <TabControl Height="68" Canvas.Left="10" Canvas.Top="10" Width="109">
