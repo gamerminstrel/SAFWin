@@ -13,11 +13,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 //Libraries I added myself.
-using System.Management.Automation; //Lets one use powershell functionality
-using System.IO; //Lets one navigate file systems (find and open files)
-using System.Globalization; //Lets one grab the TimeZone
 using System.Collections; //lets me use the Environment example & library
+using System.Globalization; //Lets one grab the TimeZone
+using System.IO; //Lets one navigate file systems (find and open files)
 using System.Management; //Lets one grab system info like CPU model, RAM, etc.
+using System.Management.Automation; //Lets one use powershell functionality
+
+
+
+
 
 namespace SAFWin
 {
@@ -53,16 +57,61 @@ namespace SAFWin
             SysInfoText.Text = "System Info:";
             // create management class object
             ManagementClass mc = new ManagementClass("Win32_ComputerSystem");
-            //collection to store all management objects
-            ManagementObjectCollection moc = mc.GetInstances();
-            if (moc.Count != 0)
+            //ManagementClass mc = new ManagementClass("Win32_Processor");
+
+            
+            ManagementObjectSearcher NewSearcher(string Key)
             {
-                foreach (ManagementObject mo in mc.GetInstances())
-                {
-                    // display general system information
-                    SysInfoText.Text +="\nManufacturer: \t" + mo["Manufacturer"].ToString();
-                }
+                ManagementClass new_mc = new ManagementClass(Key);
+                return new ManagementObjectSearcher("select * from " + new_mc);
             }
+
+            ManagementObjectSearcher searcher = NewSearcher("Win32_ComputerSystem");
+
+            void AppendSysInfoText(ManagementObject mo, string descriptor, string name) => SysInfoText.Text += $"\n{descriptor} {mo[name]}";
+            foreach (ManagementObject mo in searcher.Get())
+            {
+                AppendSysInfoText(mo, "Device Manufacturer:\t", "Manufacturer");
+                AppendSysInfoText(mo, "Model Number:\t \t", "Model");
+                AppendSysInfoText(mo, "Current Time Zone: \t", "CurrentTimeZone");
+                AppendSysInfoText(mo, "Ram (In KB): \t", "TotalPhysicalMemory");
+            }
+            
+            searcher = NewSearcher("Win32_Processor");
+            foreach (ManagementObject mo in searcher.Get())
+            {
+                AppendSysInfoText(mo, "CPU Model:\t", "Name");
+            }
+            searcher = NewSearcher("Win32_Battery");
+            foreach (ManagementObject mo in searcher.Get())
+            {
+                AppendSysInfoText(mo, "Battery Availability:\t", "Availability");
+                AppendSysInfoText(mo, "Battery Status:\t", "BatteryStatus");
+                AppendSysInfoText(mo, "Status: \t \t ", "Status");
+            }
+
+            searcher = NewSearcher("Win32_Diskdrive");
+            foreach (ManagementObject mo in searcher.Get())
+            {
+                AppendSysInfoText(mo, "Disk Drive Model:\t", "Model");
+                AppendSysInfoText(mo, "Disk Drive Name:\t", "Name");
+                AppendSysInfoText(mo, "Disk Drive Size:\t", "Size");
+            }
+            ////collection to store all management objects
+            //ManagementObjectCollection moc = mc.GetInstances();
+            //if (moc.Count != 0)
+            //{
+
+            //    foreach (ManagementObject mo in mc.GetInstances())
+            //    {
+            //        // display general system information
+            //        AppendSysInfoText(mo, "Manufacturer");
+            //        AppendSysInfoText(mo, "Model");
+            //        AppendSysInfoText(mo, "CurrentTimeZone");
+            //        AppendSysInfoText(mo, "TotalPhysicalMemory");
+            //    }
+
+            //}
         }
         void example_Environment()
         {
@@ -209,6 +258,15 @@ namespace SAFWin
             System.Diagnostics.Process.Start("ms-settings:appsfeatures");
             PUPs_checkbox.IsChecked = true;
         }
+        private void Set_TimeZone_Button_Click(object sender, RoutedEventArgs e)
+        {
+            PowerShell ps = PowerShell.Create();
+            ps.AddCommand("Set-TimeZone")
+                .AddParameter("Id", "Eastern Standard Time")
+                .Invoke();
+            timezone_checkbox.IsChecked = true;
+            //Set - TimeZone - Id "Eastern Standard Time"
+        }
 
         /* MANUFACTURER UPDATES
          * This section is intended for all utilities from HP, Dell, ASUS, etc.
@@ -282,7 +340,7 @@ namespace SAFWin
          */
         private void Chrome_Download_Button_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://www.google.com/chrome/");
+            System.Diagnostics.Process.Start("https://www.google.com/chrome/thank-you.html?statcb=0&installdataindex=empty&defaultbrowser=0#");
         }
         private void Firefox_Download_Button_Click(object sender, RoutedEventArgs e)
         {
@@ -299,14 +357,7 @@ namespace SAFWin
             System.Diagnostics.Process.Start("Chrome.exe", "chrome://settings/");
         }
 
-        private void Set_TimeZone_Button_Click(object sender, RoutedEventArgs e)
-        {
-            PowerShell ps = PowerShell.Create();
-            ps.AddCommand("Set-TimeZone")
-                .AddParameter("Id", "Eastern Standard Time")
-                .Invoke();
-            //Set - TimeZone - Id "Eastern Standard Time"
-        }
+
 
         private void Refresh_Button_Click(object sender, RoutedEventArgs e)
         {
