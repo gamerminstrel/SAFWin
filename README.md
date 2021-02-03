@@ -1,6 +1,8 @@
 # SAFWin (Setup And Fix Windows 10)
 SAFWin is a (currently Alpha/Beta) standalone application that acts as a one-stop shop for common tasks performed on Windows, mostly for first time setups. 
 
+![alt text](https://github.com/gamerminstrel/SAFWin/blob/master/SAFWin/Properties/safwin_2_3_2021.PNG)
+
 # Key Features
 -Check for the latest upgrade to Windows 10
 -One-Button click shortcuts to commonly used System Settings
