@@ -22,8 +22,8 @@ https://github.com/gamerminstrel/SAFWin/releases/tag/v0.1
 If you have an issue, file a bug report here! 
 
 # Compiling
-This app is being made using Visual Studio Community Edition (2019). It currently uses two extensions that need to be installed using the NuGet Extension manager:
--Microsoft.PowerShell.5.ReferenceAssemblies
--System.Management
+This app is being made using Visual Studio Community Edition (2019). It currently uses two extensions that need to be installed using the NuGet Extension manager:<br>
+-Microsoft.PowerShell.5.ReferenceAssemblies<br>
+-System.Management <br>
 
 Once those are added, you should be able to compile and build this application. If not, please make a bug report with more information.
