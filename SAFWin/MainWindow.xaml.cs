@@ -349,14 +349,13 @@ namespace SAFWin
         }
         private void Customizer_Button_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start(@"\\10.37.185.242\gsiso");
+            //System.Diagnostics.Process.Start(@"\\10.37.185.242\gsiso");
         }
 
         private void Reset_Chrome_Button_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start("Chrome.exe", "chrome://settings/");
         }
-
 
 
         private void Refresh_Button_Click(object sender, RoutedEventArgs e)
