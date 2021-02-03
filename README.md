@@ -4,10 +4,10 @@ SAFWin is a (currently Alpha/Beta) standalone application that acts as a one-sto
 ![alt text](https://github.com/gamerminstrel/SAFWin/blob/master/SAFWin/Properties/safwin_2_3_2021.PNG)
 
 # Key Features
-Check for the latest upgrade to Windows 10
-One-Button click shortcuts to commonly used System Settings
-Check for and automatically fix OS corruption
-Download the latest version of the Support Application from your Device Manufacturer (HP, Dell, etc.), as well as for CPU and GPU makers AMD + Intel + nVidia
+-Check for the latest upgrade to Windows 10 <br>
+-One-Button click shortcuts to commonly used System Settings <br>
+-Check for and automatically fix OS corruption <br>
+-Download the latest version of the Support Application from your Device Manufacturer (HP, Dell, etc.), as well as for CPU and GPU makers AMD + Intel + nVidia
 
 # Example Use-Cases
 -Let's say you just replaced the hard drive on a desktop or a laptop, and have to set everything back up. Once you install Windows 10 and make it to the Desktop, you can run this app and just click the buttons to download the latest updates for windows 10, set the timezone, Download updater utilities from your device's manufacturer, and use the download links directly to Firefox and Chrome.
