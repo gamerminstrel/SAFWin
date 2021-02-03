@@ -15,7 +15,8 @@ SAFWin is a (currently Alpha/Beta) standalone application that acts as a one-sto
 -Let's say you were handed a laptop from someone else, loaded up with viruses. This cannot remove the viruses, but once an antivirus program has been run successfully this can run the Windows commands to repair Windows 10. 
 
 # Binaries 
-This app is a Work In Progress and no builds are provided yet. You will need to compile this yourself. 
+This app is a Work In Progress. This build does not have anything enable that could cause breakage and is already usable.
+https://github.com/gamerminstrel/SAFWin/releases/tag/v0.1
 
 # Support
 If you have an issue, file a bug report here! 
